@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 14:15:34 2014 Gysc0
+** Last update Mon Jun  9 14:20:47 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -41,7 +41,7 @@ void		genealfs(char *path, int fd)
 	    write(fd, buff, strlen(buff) - 1);
 	  else
 	    write(fd, buff, strlen(buff) - 1);
-	  write(fd, " at: ", 4);
+	  write(fd, " at: ", 5);
 	  my_putnbr(fd, pw->pw_uid);
 	  write(fd, "\n", 1);
 	}
