@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 13:48:31 2014 Zackary Beaugelin
+** Last update Mon Jun  9 14:11:03 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -22,13 +22,13 @@ void		genealfs(char *path, int fd)
       dirp = opendir(path);
   if (!dirp)
     exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
-  if (!(d = readdir(dirp))
-      exit (fprintf(stderr, "Error reading directory\n"));
+  if (!(d = readdir(dirp)))
+    exit(fprintf(stderr, "Error reading directory\n"));
   while ((d = readdir(dirp)))
     {
       bzero(buff, 4096);
       if (d == NULL)
-	exit (0);
+	exit(0);
       if (d->d_name[0] != '.')
 	{
 	  read(open(d->d_name, O_RDONLY), buff, 4096);
