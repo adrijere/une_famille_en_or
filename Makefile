@@ -5,7 +5,7 @@
 ## Login   <gysc0@epitech.net>
 ##
 ## Started on  Mon Jun  9 10:14:36 2014 Zackary Beaugelin
-## Last update Mon Jun  9 13:23:17 2014 Zackary Beaugelin
+## Last update Mon Jun  9 17:29:26 2014 Gysc0
 ##
 
 NAME	=	genealfs
@@ -17,6 +17,7 @@ CFLAGS	+=	 -W -Wall -Wextra -Werror -g3
 RM	=	rm -rf
 
 SRCS	=	main.c \
+		my_strcat.c \
 		my_putnbr.c
 
 OBJS	=	$(SRCS:.c=.o)
