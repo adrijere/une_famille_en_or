@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 14:11:03 2014 Gysc0
+** Last update Mon Jun  9 14:15:34 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -36,7 +36,7 @@ void		genealfs(char *path, int fd)
 	  pw = getpwuid(info.st_uid);
 	  write(fd, "name: ", 6);
 	  write(fd, d->d_name, strlen(d->d_name));
-	  write(fd, "birth: ", 7);
+	  write(fd, " birth: ", 7);
 	  if (buff[strlen(buff) - 1] == '\n')
 	    write(fd, buff, strlen(buff) - 1);
 	  else
