@@ -5,7 +5,7 @@
 ** Login   <mohame_g@epitech.net>
 ** 
 ** Started on  Mon Jun  9 14:43:59 2014 mohamedi badr
-** Last update Mon Jun  9 17:33:48 2014 mohamedi badr
+** Last update Mon Jun  9 18:19:00 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 {
   if (ac > 1)
     {
-      if(my_strcmp(av[2], "-p") == 0)
+      if (my_strcmp(av[2], "-p") == 0)
 	mission3(my_unsettab(av, 2));
     }
 }

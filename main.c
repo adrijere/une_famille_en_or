@@ -5,14 +5,13 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 17:38:08 2014 Gysc0
+** Last update Mon Jun  9 18:15:54 2014 Gysc0
 */
 
 #include "ufo.h"
 
 void		display(struct dirent *d, struct stat info, int fd, char *path)
 {
-  struct passwd	*pw;
   char		buf[4096];
   char		buff[4096];
   char		*s;
@@ -24,16 +23,15 @@ void		display(struct dirent *d, struct stat info, int fd, char *path)
   stat(s, &info);
   s = strrchr(buf, '/');
   s++;
-  pw = getpwuid(info.st_uid);
   write(fd, "name: ", 6);
   write(fd, s, strlen(s));
-  write(fd, " birth: ", 7);
+  write(fd, " birth: ", 8);
   if (buff[strlen(buff) - 1] == '\n')
     write(fd, buff, strlen(buff) - 1);
   else
     write(fd, buff, strlen(buff));
   write(fd, " at: ", 5);
-  my_putnbr(fd, pw->pw_uid);
+  my_putnbr(fd, info.st_uid);
   write(fd, "\n", 1);
 }
 
