@@ -5,7 +5,7 @@
 ** Login   <mohame_g@epitech.net>
 ** 
 ** Started on  Mon Jun  9 14:43:59 2014 mohamedi badr
-** Last update Mon Jun  9 14:59:54 2014 mohamedi badr
+** Last update Mon Jun  9 15:31:22 2014 jussea_m@epitech.eu
 */
 
 #include "ufo.h"
@@ -26,7 +26,6 @@ int     mission3(char **com, int i, int fd, char **env)
           dup2(pfd[0], 0);
           dup2(fd, 1);
           tab = my_str_to_wordtab_mod(' ', com[i], 0, 0);
-          execve(my_bin(env, com[i]), my_epur_tab(tab), env);
         }
       else
         {
