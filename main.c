@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 14:20:47 2014 Gysc0
+** Last update Mon Jun  9 15:01:32 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -19,9 +19,8 @@ void		genealfs(char *path, int fd)
   struct passwd	*pw;
 
   if (!access(path, F_OK))
-      dirp = opendir(path);
-  if (!dirp)
-    exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
+    if (!(dirp = opendir(path))
+	exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
   if (!(d = readdir(dirp)))
     exit(fprintf(stderr, "Error reading directory\n"));
   while ((d = readdir(dirp)))
@@ -31,7 +30,7 @@ void		genealfs(char *path, int fd)
 	exit(0);
       if (d->d_name[0] != '.')
 	{
-	  read(open(d->d_name, O_RDONLY), buff, 4096);
+	  read(open(d->d_name, O_RDONLY, 0444), buff, 4096);
 	  stat(d->d_name, &info);
 	  pw = getpwuid(info.st_uid);
 	  write(fd, "name: ", 6);
@@ -58,7 +57,7 @@ int	main(int ac, char **av)
   else if (ac == 2 || !strcmp("-f", av[2]))
     {
       if (av[2] && (!strcmp("-f", av[2]) && av[3]))
-	genealfs(av[1], (fd = open(av[3], O_RDWR | O_CREAT, 0660)));
+	genealfs(av[1], (fd = open(av[3], O_RDWR | O_CREAT, 0666)));
       else
 	genealfs(av[1], fd);
     }
