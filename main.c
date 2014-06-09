@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 13:30:24 2014 Zackary Beaugelin
+** Last update Mon Jun  9 13:48:31 2014 Zackary Beaugelin
 */
 
 #include "ufo.h"
@@ -37,8 +37,11 @@ void		genealfs(char *path, int fd)
 	  write(fd, "name: ", 6);
 	  write(fd, d->d_name, strlen(d->d_name));
 	  write(fd, "birth: ", 7);
-	  write(fd, buff, strlen(buff));
-	  write(fd, "at: ", 4);
+	  if (buff[strlen(buff) - 1] == '\n')
+	    write(fd, buff, strlen(buff) - 1);
+	  else
+	    write(fd, buff, strlen(buff) - 1);
+	  write(fd, " at: ", 4);
 	  my_putnbr(fd, pw->pw_uid);
 	  write(fd, "\n", 1);
 	}
