@@ -5,7 +5,7 @@
 ** Login   <jussea_m@epitech.net>
 ** 
 ** Started on  Mon Jun  9 15:26:35 2014 jussea_m@epitech.eu
-** Last update Mon Jun  9 15:26:50 2014 jussea_m@epitech.eu
+** Last update Mon Jun  9 17:33:02 2014 mohamedi badr
 */
 
 #ifndef __UFO_H__
@@ -22,5 +22,6 @@
 
 void    genealfs(char *path, int fd);
 void    my_putnbr(int fd, int nb);
+void    *xmalloc(int size);
 
 #endif /*!__UFO_H__*/

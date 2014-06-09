@@ -5,62 +5,39 @@
 ** Login   <mohame_g@epitech.net>
 ** 
 ** Started on  Mon Jun  9 14:43:59 2014 mohamedi badr
-** Last update Mon Jun  9 15:31:22 2014 jussea_m@epitech.eu
+** Last update Mon Jun  9 17:33:48 2014 mohamedi badr
 */
 
 #include "ufo.h"
 
-int     mission3(char **com, int i, int fd, char **env)
+char	**my_unsettab(char **tab, int i)
 {
-  int   pfd[2];
-  int   pid;
-  char  **tab;
+  int	j;
+  char	**ret;
 
-  if (i >= 0)
+  j = 0;
+  if (tab[0] == NULL)
+    return (NULL)
+  ret = xmalloc(sizeof(char *) * my_size_tab(tab) - i);
+  while (tab[n])
     {
-      if (pipe(pfd) == -1)
-        return (-1);
-      if ((pid = fork()) == 0)
-        {
-          close(pfd[1]);
-          dup2(pfd[0], 0);
-          dup2(fd, 1);
-          tab = my_str_to_wordtab_mod(' ', com[i], 0, 0);
-        }
-      else
-        {
-          close(pfd[0]);
-          my_pipe(com, i - 1, pfd[1], env);
-          if (i >= 0)
-            wait(NULL);
-          shell(env);
-        }
+      my_strcpy(ret[j], tab[i]);
+      j++;
+      i++;
     }
-  return (0);
+  return (ret);
 }
 
-int     checkpipe(char  *str)
+int     mission3(char **tab)
 {
-  int   n;
-
-  n = 0;
-  while (str[n])
-    {
-      if (str[n] == '-' && str[n + 1] == 'p')
-        return (1);
-      n++;
-    }
-  return (0);
+  
 }
 
 int	main(int ac, char **av)
 {
   if (ac > 1)
     {
-      while (av[ac] != 0)
-	{
-	  checkpipe(av[ac]);
-	  ac--;
-	}
+      if(my_strcmp(av[2], "-p") == 0)
+	mission3(my_unsettab(av, 2));
     }
 }
