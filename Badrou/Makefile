@@ -5,7 +5,7 @@
 ## Login   <mohame_g@epitech.net>
 ## 
 ## Started on  Mon Jun  9 15:42:54 2014 mohamedi badr
-## Last update Tue Jun 10 11:00:01 2014 jussea_m@epitech.eu
+## Last update Tue Jun 10 14:06:26 2014 jussea_m@epitech.eu
 ##
 
 NAME    =       genealfs
@@ -20,7 +20,9 @@ SRCS    =       pipe.c \
 		my_epur_str.c \
 		my_putnbr.c \
 		xmalloc.c \
-		my_strcmp.c
+		my_strcmp.c \
+		my_strcat.c \
+		main.c
 
 OBJS    =       $(SRCS:.c=.o)
 
