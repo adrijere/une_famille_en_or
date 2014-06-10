@@ -1,11 +1,11 @@
 /*
-** xmalloc.c for  in /home/gysc0/rendu/une_famille_en_or
-**
-** Made by Gysc0
-** Login   <gysc0@epitech.net>
-**
-** Started on  Tue Jun 10 15:05:55 2014 Gysc0
-** Last update Tue Jun 10 15:06:00 2014 Gysc0
+** xmalloc.c for xmalloc in /home/mohame_g/rendu/Systeme_unix/une_famille_en_or/Badrou
+** 
+** Made by mohamedi badr
+** Login   <mohame_g@epitech.net>
+** 
+** Started on  Mon Jun  9 16:47:29 2014 mohamedi badr
+** Last update Tue Jun 10 11:02:06 2014 jussea_m@epitech.eu
 */
 
 #include "ufo.h"
