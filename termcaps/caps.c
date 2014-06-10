@@ -5,7 +5,7 @@
 ** Login   <e_edouard@epitech.net>
 ** 
 ** Started on  Mon Jun  9 20:29:08 2014 edouard vache
-** Last update Tue Jun 10 09:24:57 2014 edouard vache
+** Last update Tue Jun 10 10:44:35 2014 edouard vache
 */
 
 #include "my.h"
@@ -21,6 +21,18 @@ int     my_outc(int c)
   return (0);
 }
 
+void		my_putstr(char *str)
+{
+  int		i;
+
+  i = 0;
+  while (str[i] != '\0')
+    {
+      my_putchar(str[i]);
+      i = i + 1;
+    }
+}
+
 int             my_clean()
 {
   char          *res;
@@ -28,12 +40,12 @@ int             my_clean()
 
   if (tgetent(NULL, get_term(environ)) == 0)
     {
-      puts("problem terminal");
+      my_putstr("problem terminal");
       return (2);
     }
   if ((res = tgetstr("cl", NULL)) == NULL)
     {
-      puts("bad termcaps");
+      my_putstr("bad termcaps");
       return (1);
     }
   tputs(tgoto(res, 0, 0), 1, my_outc);
@@ -57,7 +69,8 @@ t_list		*enter(char *buffer, t_listel *elem, t_list *new_list)
 	{
 	 fd =  open(elem->data, O_RDONLY);
 	 read(fd, str, 4096);
-	 printf("%s\n", str);
+	 my_putstr(str);
+	 my_putchar('\n');
 	 close(fd);
 	}
       else

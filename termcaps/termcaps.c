@@ -5,7 +5,7 @@
 ** Login   <lennuy_f@epitech.net>
 ** 
 ** Started on  Mon Jun  9 13:57:48 2014 lennuy_f
-** Last update Mon Jun  9 20:51:30 2014 edouard vache
+** Last update Tue Jun 10 10:45:00 2014 edouard vache
 */
 
 #include "my.h"
@@ -17,7 +17,8 @@ void            afflistsel(t_list *newlist)
   elem = newlist->racine;
   while (elem != NULL)
     {
-      printf("%s\n", elem->data);
+      my_putstr(elem->data);
+      my_putchar('\n');
       elem = elem->next;
     }
 }
