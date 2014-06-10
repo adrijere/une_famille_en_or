@@ -5,7 +5,7 @@
 ** Login   <jussea_m@epitech.net>
 ** 
 ** Started on  Mon Jun  9 15:26:35 2014 jussea_m@epitech.eu
-** Last update Tue Jun 10 14:09:24 2014 jussea_m@epitech.eu
+** Last update Tue Jun 10 14:36:23 2014 jussea_m@epitech.eu
 */
 
 #ifndef __UFO_H__
@@ -31,8 +31,6 @@ void            display(struct dirent *d, struct stat info, int fd, char *path);
 void            genealfs(char *path, int fd);
 int		mission3(char **tab);
 char		*my_strcat(char *str1, char *str2);
-int		my_strlen(char *str)
-
-
+int		my_strlen(char *str);
 
 #endif /*!__UFO_H__*/
