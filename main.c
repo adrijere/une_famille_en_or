@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Mon Jun  9 18:15:54 2014 Gysc0
+** Last update Tue Jun 10 09:11:06 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -41,17 +41,20 @@ void		genealfs(char *path, int fd)
   struct stat	info;
   struct dirent *d;
 
-  if (!access(path, F_OK))
-    if (!(dirp = opendir(path)))
-	exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
-  if (!(d = readdir(dirp)))
-    exit(fprintf(stderr, "Error reading directory\n"));
-  while ((d = readdir(dirp)))
+  stat(path, &info);
+  if (S_ISDIR(info.st_mode))
     {
-      if (d == NULL)
-	exit(0);
-      if (d->d_name[0] != '.')
-	display(d, info, fd, path);
+      if (!(dirp = opendir(path)))
+	exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
+      if (!(d = readdir(dirp)))
+	exit(fprintf(stderr, "Error reading directory\n"));
+      while ((d = readdir(dirp)))
+	{
+	  if (d == NULL)
+	    exit(0);
+	  if (d->d_name[0] != '.')
+	    display(d, info, fd, path);
+	}
     }
 }
 
