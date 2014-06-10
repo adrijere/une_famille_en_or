@@ -5,7 +5,7 @@
 ** Login   <jussea_m@epitech.net>
 **
 ** Started on  Mon Jun  9 17:44:30 2014 jussea_m@epitech.eu
-** Last update Tue Jun 10 16:29:20 2014 Gysc0
+** Last update Tue Jun 10 16:45:49 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -45,7 +45,12 @@ int     mission3(char **tab)
     {
       close(fd[1]);
       dup2(fd[0], 0);
-      execvp(tab[2], tab + 2);
+      if (execvp(tab[2], tab + 2) == -1)
+	{
+	  write(2, tab[2], my_strlen(tab[2]));
+	  write(2, ": command not found\n", 20);
+	  exit(-1);
+	}
       wait(NULL);
       exit(0);
     }
