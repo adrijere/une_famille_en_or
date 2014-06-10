@@ -5,7 +5,7 @@
 ## Login   <mohame_g@epitech.net>
 ## 
 ## Started on  Mon Jun  9 15:42:54 2014 mohamedi badr
-## Last update Mon Jun  9 15:44:16 2014 mohamedi badr
+## Last update Tue Jun 10 11:00:01 2014 jussea_m@epitech.eu
 ##
 
 NAME    =       genealfs
@@ -17,6 +17,10 @@ CFLAGS  +=       -W -Wall -Wextra -Werror -g3
 RM      =       rm -rf
 
 SRCS    =       pipe.c \
+		my_epur_str.c \
+		my_putnbr.c \
+		xmalloc.c \
+		my_strcmp.c
 
 OBJS    =       $(SRCS:.c=.o)
 
