@@ -5,7 +5,7 @@
 ** Login   <lennuy_f@epitech.net>
 ** 
 ** Started on  Mon Jun  9 13:57:48 2014 lennuy_f
-** Last update Tue Jun 10 10:45:00 2014 edouard vache
+** Last update Tue Jun 10 14:57:23 2014 lennuy_f
 */
 
 #include "my.h"
@@ -83,7 +83,8 @@ int		open_file(t_list *list, char *str2)
     return (-1);
   while ((file = readdir(rep)))
     {
-      pushback(list, file->d_name, pos);
+      if (strcmp(file->d_name, "..") != 0 && strcmp(file->d_name, ".") != 0)
+	pushback(list, file->d_name, pos);
       pos = pos + 1;
     }
   return (0);

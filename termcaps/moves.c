@@ -5,7 +5,7 @@
 ** Login   <e_edouard@epitech.net>
 ** 
 ** Started on  Tue Jun 10 09:12:50 2014 edouard vache
-** Last update Tue Jun 10 10:45:38 2014 edouard vache
+** Last update Tue Jun 10 15:22:45 2014 lennuy_f
 */
 
 #include "my.h"
@@ -88,6 +88,7 @@ int     fleches(struct termios term, t_list *newlist, t_listel *elem)
     {
       bzero(buffer, sizeof(buffer));
       read(0, buffer, 3);
+      printf("%d, %d, %d\n", buffer[0], buffer[1], buffer[2]); 
       newlist = enter(buffer, elem, newlist);
       if (buffer[0] == 27 && strlen(buffer) <= 2)
         {
@@ -105,7 +106,6 @@ int     fleches(struct termios term, t_list *newlist, t_listel *elem)
           elem = elem->next;
           cleanprint(newlist, elem);
         }
-
     }
   return (0);
 }
