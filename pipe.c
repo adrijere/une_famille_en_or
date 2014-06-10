@@ -5,7 +5,7 @@
 ** Login   <jussea_m@epitech.net>
 **
 ** Started on  Mon Jun  9 17:44:30 2014 jussea_m@epitech.eu
-** Last update Tue Jun 10 14:49:57 2014 jussea_m@epitech.eu
+** Last update Tue Jun 10 15:01:28 2014 jussea_m@epitech.eu
 */
 
 #include "ufo.h"
@@ -46,18 +46,6 @@ int     mission3(char **tab)
       execvp(tab[3], tab + 3);
       wait(NULL);
       return (0);
-    }
-  return (0);
-}
-
-int	main(int ac, char **av)
-{
-  if (ac > 2)
-    {
-      if(my_strcmp(av[2], "-p") == 0)
-	{
-	  mission3(av);
-	}
     }
   return (0);
 }
