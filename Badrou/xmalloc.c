@@ -5,8 +5,10 @@
 ** Login   <mohame_g@epitech.net>
 ** 
 ** Started on  Mon Jun  9 16:47:29 2014 mohamedi badr
-** Last update Mon Jun  9 17:32:46 2014 mohamedi badr
+** Last update Tue Jun 10 11:02:06 2014 jussea_m@epitech.eu
 */
+
+#include "ufo.h"
 
 void    *xmalloc(int size)
 {

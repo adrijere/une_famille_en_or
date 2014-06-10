@@ -5,7 +5,7 @@
 ** Login   <jussea_m@epitech.net>
 ** 
 ** Started on  Mon Jun  9 15:26:35 2014 jussea_m@epitech.eu
-** Last update Mon Jun  9 17:33:02 2014 mohamedi badr
+** Last update Tue Jun 10 11:01:16 2014 jussea_m@epitech.eu
 */
 
 #ifndef __UFO_H__
@@ -20,8 +20,11 @@
 #  include <dirent.h>
 #  include <pwd.h>
 
-void    genealfs(char *path, int fd);
-void    my_putnbr(int fd, int nb);
-void    *xmalloc(int size);
+void		genealfs(char *path, int fd);
+void		my_putnbr(int fd, int nb);
+void		*xmalloc(int size);
+int		my_strcmp(char *s1, char *s2);
+char		*my_epur_str(char *str);
+
 
 #endif /*!__UFO_H__*/
