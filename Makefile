@@ -5,7 +5,7 @@
 ## Login   <gysc0@epitech.net>
 ##
 ## Started on  Mon Jun  9 10:14:36 2014 Zackary Beaugelin
-## Last update Tue Jun 10 16:00:48 2014 Gysc0
+## Last update Tue Jun 10 16:32:49 2014 Gysc0
 ##
 
 NAME	=	genealfs
@@ -18,7 +18,7 @@ RM	=	rm -rf
 
 SRCS	=	main.c \
 		my_strcat.c \
-		my_strcmp.c \
+		my_strncmp.c \
 		pipe.c \
 		xmalloc.c \
 		my_putnbr.c

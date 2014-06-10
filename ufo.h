@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:33:20 2014 Zackary Beaugelin
-** Last update Tue Jun 10 16:03:19 2014 Gysc0
+** Last update Tue Jun 10 16:35:43 2014 Gysc0
 */
 
 #ifndef __UFO_H__
@@ -26,7 +26,7 @@ int	genealfs(char *path, int fd, int ret);
 void	my_putnbr(int fd, int nb);
 char	*my_strcat(char *str1, char *str2);
 int	my_strlen(char *str);
-int	my_strcmp(char *s1, char *s2);
+int	my_strncmp(char *s1, char *s2, int n);
 void	*xmalloc(int size);
 int	mission3(char **tab);
 
