@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Tue Jun 10 12:09:47 2014 jussea_m@epitech.eu
+** Last update Tue Jun 10 14:27:30 2014 jussea_m@epitech.eu
 */
 
 #include "ufo.h"
@@ -54,12 +54,8 @@ void		genealfs(char *path, int fd)
 	{
 	  if (strcmp(d->d_name, ".") && strcmp(d->d_name, ".."))
 	    {
-	      write(fd, "family: ", 8);
-	      write(fd, d->d_name, strlen(d->d_name));
-	      write(fd, "\n", 1);
 	      realpath(my_strcat(path, my_strcat("/", d->d_name)), buf);
 	      s = my_strcat(buf, "/");
-	      dprintf(2, "%s\n", s);
 	      genealfs(s, fd);
 	      write(fd, "______________________________\n", 31);
 	    }
