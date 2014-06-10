@@ -1,11 +1,11 @@
 /*
-** my_put_nbr.c for my_put_nbr.c in /home/beauge_z/Documents/Piscine/Piscine-C-Jour_03
+** my_putnbr.c for  in /home/gysc0/rendu/une_famille_en_or
 **
-** Made by Zackary Beaugelin
-** Login   <beauge_z@epitech.net>
+** Made by Gysc0
+** Login   <gysc0@epitech.net>
 **
-** Started on  Wed Oct  2 13:42:14 2013 Zackary Beaugelin
-** Last update Mon Jun  9 12:04:16 2014 Zackary Beaugelin
+** Started on  Tue Jun 10 14:59:34 2014 Gysc0
+** Last update Tue Jun 10 14:59:37 2014 Gysc0
 */
 
 #include "ufo.h"

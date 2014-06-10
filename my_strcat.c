@@ -1,11 +1,11 @@
 /*
-** my_strcat.c for 42sh in /home/gysc0/rendu/PSU_2013_minishell2
+** my_strcat.c for  in /home/gysc0/rendu/une_famille_en_or
 **
-** Made by Zackary Beaugelin
-** Login   <beauge_z@epitech.net>
+** Made by Gysc0
+** Login   <gysc0@epitech.net>
 **
-** Started on  Mon Apr  7 20:14:56 2014 Zackary Beaugelin
-** Last update Mon Jun  9 17:30:38 2014 Gysc0
+** Started on  Tue Jun 10 14:58:53 2014 Gysc0
+** Last update Tue Jun 10 14:58:56 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -33,7 +33,7 @@ char	*my_strcat(char *str1, char *str2)
   i  = 0;
   k = my_strlen(str1);
   lenght = my_strlen(str2) + k;
-  ret = malloc(sizeof(char) * lenght + 1);
+  ret = xmalloc(sizeof(char) * lenght + 1);
   while (i != k)
     {
       ret[i] = str1[i];
