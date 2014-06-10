@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Tue Jun 10 09:11:06 2014 Gysc0
+** Last update Tue Jun 10 09:26:28 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -17,7 +17,10 @@ void		display(struct dirent *d, struct stat info, int fd, char *path)
   char		*s;
 
   bzero(buff, 4096);
-  s = my_strcat(my_strcat("./", path), my_strcat("/", d->d_name));
+  if (path[0] != '.' && path[1] != '/')
+    s = my_strcat(my_strcat("./", path), my_strcat("/", d->d_name));
+  else
+    s = my_strcat(path, my_strcat("/", d->d_name));
   realpath(s, buf);
   read(open(s, O_RDONLY, 0444), buff, 4096);
   stat(s, &info);
@@ -41,20 +44,16 @@ void		genealfs(char *path, int fd)
   struct stat	info;
   struct dirent *d;
 
-  stat(path, &info);
-  if (S_ISDIR(info.st_mode))
+  if (!(dirp = opendir(path)))
+    exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
+  if (!(d = readdir(dirp)))
+    exit(fprintf(stderr, "Error reading directory\n"));
+  while ((d = readdir(dirp)))
     {
-      if (!(dirp = opendir(path)))
-	exit(fprintf(stderr, "Error opening directory, maybe not a directory\n"));
-      if (!(d = readdir(dirp)))
-	exit(fprintf(stderr, "Error reading directory\n"));
-      while ((d = readdir(dirp)))
-	{
-	  if (d == NULL)
-	    exit(0);
-	  if (d->d_name[0] != '.')
-	    display(d, info, fd, path);
-	}
+      if (d == NULL)
+	exit(0);
+      if (d->d_name[0] != '.')
+	display(d, info, fd, path);
     }
 }
 
