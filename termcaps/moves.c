@@ -5,7 +5,7 @@
 ** Login   <e_edouard@epitech.net>
 ** 
 ** Started on  Tue Jun 10 09:12:50 2014 edouard vache
-** Last update Tue Jun 10 15:22:45 2014 lennuy_f
+** Last update Tue Jun 10 20:27:55 2014 edouard vache
 */
 
 #include "my.h"
@@ -48,11 +48,11 @@ int             my_underlinere()
   return (0);
 }
 
-void            listprint(t_list *list, t_listel *elem)
+void            listprint(t_list **list, t_listel *elem)
 {
   t_listel      *new_elem;
 
-  new_elem = list->racine;
+  new_elem = (*list)->racine;
   while (new_elem != NULL)
     {
       if (new_elem->pos == elem->pos)
@@ -72,24 +72,23 @@ void            listprint(t_list *list, t_listel *elem)
     }
 }
 
-void    cleanprint(t_list *newlist, t_listel *elem)
+void    cleanprint(t_list **newlist, t_listel *elem)
 {
   my_clean();
   listprint(newlist, elem);
 }
 
-int     fleches(struct termios term, t_list *newlist, t_listel *elem)
+int     fleches(struct termios term, t_list **newlist, t_listel *elem)
 {
   char  *buffer;
 
-  elem = newlist->racine;
+  elem = (*newlist)->racine;
   buffer = malloc(sizeof(char) * 4096);
   while (1)
     {
       bzero(buffer, sizeof(buffer));
       read(0, buffer, 3);
-      printf("%d, %d, %d\n", buffer[0], buffer[1], buffer[2]); 
-      newlist = enter(buffer, elem, newlist);
+      enter(buffer, elem, newlist);
       if (buffer[0] == 27 && strlen(buffer) <= 2)
         {
           term.c_lflag = (ICANON | ECHO);

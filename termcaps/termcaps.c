@@ -5,7 +5,7 @@
 ** Login   <lennuy_f@epitech.net>
 ** 
 ** Started on  Mon Jun  9 13:57:48 2014 lennuy_f
-** Last update Tue Jun 10 14:57:23 2014 lennuy_f
+** Last update Tue Jun 10 20:31:13 2014 edouard vache
 */
 
 #include "my.h"
@@ -70,10 +70,8 @@ t_list          *initialisation()
 
 int		open_file(t_list *list, char *str2)
 {
-  t_listel	*elem;
   DIR		*rep;
   struct dirent	*file;
-  char		*str;
   int		pos;
 
   pos = 1;
@@ -90,12 +88,13 @@ int		open_file(t_list *list, char *str2)
   return (0);
 }
 
-int		main(int ac, char **av)
+int		main()
 {
   t_list	*newlist;
   t_listel	*elem;
-  struct termios        term;
+  struct termios	term;
 
+  elem = xmalloc(sizeof(*elem));
   tcgetattr(0, &term);
   term.c_lflag &= ~ECHO;
   term.c_lflag &= ~ICANON;
@@ -106,6 +105,6 @@ int		main(int ac, char **av)
   newlist = initialisation();
   open_file(newlist, "./");
   afflistsel(newlist);
-  fleches(term, newlist, elem);
+  fleches(term, &newlist, elem);
   return (0);
 }

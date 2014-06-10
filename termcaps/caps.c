@@ -5,7 +5,7 @@
 ** Login   <e_edouard@epitech.net>
 ** 
 ** Started on  Mon Jun  9 20:29:08 2014 edouard vache
-** Last update Tue Jun 10 10:44:35 2014 edouard vache
+** Last update Tue Jun 10 20:34:58 2014 edouard vache
 */
 
 #include "my.h"
@@ -52,10 +52,10 @@ int             my_clean()
   return (0);
 }
 
-t_list		*enter(char *buffer, t_listel *elem, t_list *new_list)
+t_list		*enter(char *buffer, t_listel *elem, t_list **new_list)
 {
   DIR		*rep;
-  struct dirent	*file;
+  //struct dirent	*file;
   char		*str;
   int		fd;
   t_list	*new_liste;
@@ -63,7 +63,7 @@ t_list		*enter(char *buffer, t_listel *elem, t_list *new_list)
   str = malloc(sizeof(char) * 4096);
   if (buffer[0] == 10)
     {
-      file == NULL;
+      //      file = NULL;
       rep = opendir(elem->data);
       if (rep == NULL)
 	{
@@ -82,5 +82,5 @@ t_list		*enter(char *buffer, t_listel *elem, t_list *new_list)
 	  return (new_liste);
 	}
     }
-  return (new_list);
+  return (*new_list);
 }
