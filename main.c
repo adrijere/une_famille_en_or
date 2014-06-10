@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Tue Jun 10 16:39:25 2014 Gysc0
+** Last update Tue Jun 10 17:14:43 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -46,29 +46,41 @@ void		display(struct dirent *d, struct stat info, int fd, char *path)
   display_bis(fd, s, buff, info.st_uid);
 }
 
+int	rec_genealfs(int fd, char *path, char *buf, char *name)
+{
+  char	*s;
+  int	ret;
+
+  ret = 0;
+  realpath(my_strcat(path, my_strcat("/", name)), buf);
+  s = my_strcat(buf, "/");
+  ret = genealfs(s, fd, ret);
+  write(fd, "______________________________\n", 31);
+  return (ret);
+}
+
 int		genealfs(char *path, int fd, int ret)
 {
   DIR		*dirp;
   char		buf[4096];
-  char		*s;
   struct stat	info;
   struct dirent *d;
 
   if (!(dirp = opendir(path)))
-    return (write(2, "Error opening directory, maybe not a directory\n", 47));
+    {
+      write(2, "Error opening directory, maybe not a directory\n", 47);
+      return (-1);
+    }
   while ((d = readdir(dirp)))
     {
       if (d->d_type == DT_DIR)
 	{
-	  if (my_strncmp(d->d_name, ".", 1) && my_strncmp(d->d_name, "..", 2) && !ret)
-	    {
-	      realpath(my_strcat(path, my_strcat("/", d->d_name)), buf);
-	      s = my_strcat(buf, "/");
-	      ret = genealfs(s, fd, ret);
-	      write(fd, "______________________________\n", 31);
-	    }
+	  if (my_strncmp(d->d_name, ".", 1)
+	      && my_strncmp(d->d_name, "..", 2) && !ret)
+	    ret = rec_genealfs(fd, path, buf, d->d_name);
 	}
-      else if (!ret && d->d_name[0] != '.' && my_strncmp(d->d_name, "father", 6)
+      else if (!ret && d->d_name[0] != '.' &&
+	       my_strncmp(d->d_name, "father", 6)
 	       && my_strncmp(d->d_name, "mother", 6))
 	display(d, info, fd, path);
     }
@@ -87,12 +99,13 @@ int	main(int ac, char **av)
       write(2, "./genealfs famille [-f file | -p cmd]\n", 38);
       return (-1);
     }
-  else if (ac == 2 || !my_strncmp("-f", av[2], 2) || !my_strncmp("-p", av[2], 2))
+  else if (ac == 2
+	   || !my_strncmp("-f", av[2], 2) || !my_strncmp("-p", av[2], 2))
     {
       if (av[2] && (!my_strncmp("-f", av[2], 2) && av[3]))
 	ret = genealfs(av[1], (fd = open(av[3], O_RDWR | O_CREAT, 0666)), 0);
       else if (av[2] && (!my_strncmp("-p", av[2], 2) && av[3]))
-	ret = mission3(av + 1);
+	ret = mission3(av + 1, -1);
       else
 	ret = genealfs(av[1], fd, 0);
     }

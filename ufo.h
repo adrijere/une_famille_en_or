@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:33:20 2014 Zackary Beaugelin
-** Last update Tue Jun 10 16:35:43 2014 Gysc0
+** Last update Tue Jun 10 17:02:30 2014 Gysc0
 */
 
 #ifndef __UFO_H__
@@ -28,6 +28,6 @@ char	*my_strcat(char *str1, char *str2);
 int	my_strlen(char *str);
 int	my_strncmp(char *s1, char *s2, int n);
 void	*xmalloc(int size);
-int	mission3(char **tab);
+int	mission3(char **tab, int ret);
 
 #endif /*!__UFO_H__*/
