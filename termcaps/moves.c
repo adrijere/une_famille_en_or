@@ -5,7 +5,7 @@
 ** Login   <e_edouard@epitech.net>
 ** 
 ** Started on  Tue Jun 10 09:12:50 2014 edouard vache
-** Last update Tue Jun 10 09:21:00 2014 edouard vache
+** Last update Tue Jun 10 10:45:38 2014 edouard vache
 */
 
 #include "my.h"
@@ -17,12 +17,12 @@ int             my_underliners()
 
   if (tgetent(NULL, get_term(environ)) == 0)
     {
-      puts("problem terminal");
+      my_putstr("problem terminal");
       return (2);
     }
   if ((res = tgetstr("us", NULL)) == NULL)
     {
-      puts("bad termcaps");
+      my_putstr("bad termcaps");
       return (1);
     }
   tputs(res, 1, my_outc);
@@ -36,12 +36,12 @@ int             my_underlinere()
 
   if (tgetent(NULL, get_term(environ)) == 0)
     {
-      puts("problem terminal");
+      my_putstr("problem terminal");
       return (2);
     }
   if ((res = tgetstr("ue", NULL)) == NULL)
     {
-      puts("bad termcaps");
+      my_putstr("bad termcaps");
       return (1);
     }
   tputs(res, 1, my_outc);
@@ -58,14 +58,16 @@ void            listprint(t_list *list, t_listel *elem)
       if (new_elem->pos == elem->pos)
         {
           my_underliners();
-          printf("%s\n", new_elem->data);
-          my_underlinere();
+          my_putstr(new_elem->data);
+	  my_putchar('\n');
+	  my_underlinere();
           new_elem = new_elem->next;
         }
       else
         {
-          printf("%s\n", new_elem->data);
-          new_elem = new_elem->next;
+	  my_putstr(new_elem->data);
+          my_putchar('\n');
+	  new_elem = new_elem->next;
         }
     }
 }
