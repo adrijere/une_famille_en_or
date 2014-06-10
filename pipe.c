@@ -5,7 +5,7 @@
 ** Login   <jussea_m@epitech.net>
 **
 ** Started on  Mon Jun  9 17:44:30 2014 jussea_m@epitech.eu
-** Last update Tue Jun 10 15:01:28 2014 jussea_m@epitech.eu
+** Last update Tue Jun 10 16:03:38 2014 Gysc0
 */
 
 #include "ufo.h"
@@ -27,25 +27,27 @@ int     mission3(char **tab)
 {
   int	pid;
   int	fd[2];
+  int	ret;
 
+  ret = 0;
   if (pipe(fd) == -1)
-    return (write(2, "Genealfs: Error\n", 16));
+    return (write(2, "genealfs: Error\n", 16));
   if ((pid = fork()) < 0)
      return (-1);
   if (pid == 0)
     {
       close(fd[0]);
       dup2(fd[1], 1);
-      genealfs(tab[1], 1);
-      return (0);
+      ret = genealfs(tab[0], 1, 0);
+      exit(0);
     }
   else
     {
       close(fd[1]);
       dup2(fd[0], 0);
-      execvp(tab[3], tab + 3);
+      execvp(tab[2], tab + 2);
       wait(NULL);
-      return (0);
+      exit(0);
     }
-  return (0);
+  return (ret);
 }

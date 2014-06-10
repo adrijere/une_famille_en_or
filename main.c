@@ -5,24 +5,13 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:16:21 2014 Zackary Beaugelin
-** Last update Tue Jun 10 15:05:06 2014 Gysc0
+** Last update Tue Jun 10 16:17:04 2014 Gysc0
 */
 
 #include "ufo.h"
 
-void		display(struct dirent *d, struct stat info, int fd, char *path)
+void	display_bis(int fd, char *s, char *buff, int uid)
 {
-  char		buf[4096];
-  char		buff[4096];
-  char		*s;
-
-  bzero(buff, 4096);
-  s = my_strcat(path, d->d_name);
-  realpath(s, buf);
-  read(open(s, O_RDONLY, 0444), buff, 4096);
-  stat(s, &info);
-  s = strrchr(buf, '/');
-  s++;
   write(fd, "name: ", 6);
   write(fd, s, my_strlen(s));
   if (my_strlen(s) < 10)
@@ -34,8 +23,27 @@ void		display(struct dirent *d, struct stat info, int fd, char *path)
   else
     write(fd, buff, my_strlen(buff));
   write(fd, "\tat: ", 5);
-  my_putnbr(fd, info.st_uid);
+  my_putnbr(fd, uid);
   write(fd, "\n", 1);
+}
+void		display(struct dirent *d, struct stat info, int fd, char *path)
+{
+  char		buf[4096];
+  char		buff[4096];
+  char		*s;
+
+  bzero(buff, 4096);
+  s = xmalloc(sizeof(char *) * 4096);
+  bzero(s, 4096);
+  if (s[my_strlen(s) - 1] != '/')
+    s = my_strcat(path, "/");
+  s = my_strcat(s, d->d_name);
+  realpath(s, buf);
+  read(open(s, O_RDONLY, 0444), buff, 4096);
+  stat(s, &info);
+  s = strrchr(buf, '/');
+  s++;
+  display_bis(fd, s, buff, info.st_uid);
 }
 
 int		genealfs(char *path, int fd, int ret)
@@ -83,6 +91,8 @@ int	main(int ac, char **av)
     {
       if (av[2] && (!my_strcmp("-f", av[2]) && av[3]))
 	ret = genealfs(av[1], (fd = open(av[3], O_RDWR | O_CREAT, 0666)), 0);
+      else if (av[2] && (!my_strcmp("-p", av[2]) && (av + 3)))
+	ret = mission3(av + 1);
       else
 	ret = genealfs(av[1], fd, 0);
     }

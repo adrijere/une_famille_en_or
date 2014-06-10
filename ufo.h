@@ -5,7 +5,7 @@
 ** Login   <gysc0@epitech.net>
 **
 ** Started on  Mon Jun  9 10:33:20 2014 Zackary Beaugelin
-** Last update Tue Jun 10 15:06:24 2014 Gysc0
+** Last update Tue Jun 10 16:03:19 2014 Gysc0
 */
 
 #ifndef __UFO_H__
@@ -17,6 +17,8 @@
 #  include <string.h>
 #  include <fcntl.h>
 #  include <sys/stat.h>
+#  include <sys/types.h>
+#  include <sys/wait.h>
 #  include <dirent.h>
 #  include <pwd.h>
 
@@ -26,5 +28,6 @@ char	*my_strcat(char *str1, char *str2);
 int	my_strlen(char *str);
 int	my_strcmp(char *s1, char *s2);
 void	*xmalloc(int size);
+int	mission3(char **tab);
 
 #endif /*!__UFO_H__*/
